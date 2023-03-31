@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My location</title>
+</head>
+<body>
+<div th:each="elements : ${loc}">
+    <div><label>name: </label><span th:text="${elements.name}" th:remove="tag">name</span></div>
+    <div><label>address1: </label><span th:text="${elements.address1}" th:remove="tag">address1</span></div>
+    <div><label>address2: </label><span th:text="${elements.address2}" th:remove="tag">address2</span></div>
+    <div><label>city: </label><span th:text="${elements.city}" th:remove="tag">city</span></div>
+    <div><label>state: </label><span th:text="${elements.state}" th:remove="tag">state</span></div>
+    <div><label>zipCode: </label><span th:text="${elements.zipCode}" th:remove="tag">zipCode</span></div>
+    <form th:action="@{/delete}" method="post">
+        <input type="hidden" name="id" th:value="${elements.id}">
+        <button type="submit">Delete location</button>
+    </form>
+
+</div>
+<div th:each="elements : ${sharedLocation}">
+    <div><label>name </label><span th:text="${elements.name}" th:remove="tag">name</span></div>
+    <div><label>address1 </label><span th:text="${elements.address1}" th:remove="tag">address1</span></div>
+    <div><label>address2 </label><span th:text="${elements.address2}" th:remove="tag">address2</span></div>
+    <div><label>city </label><span th:text="${elements.city}" th:remove="tag">city</span></div>
+    <div><label>state </label><span th:text="${elements.state}" th:remove="tag">state</span></div>
+    <div><label>zipCode: </label><span th:text="${elements.zipCode}" th:remove="tag">zipCode</span></div>
+</div>
+
+</body>
+</html>

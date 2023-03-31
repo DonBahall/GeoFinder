@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lobby</title>
+</head>
+<body>
+<form method="post" th:action="@{/address}">
+    <p><label for="name">Name:</label>
+        <input type="text" id="name" name="name" required></p>
+
+
+    <p><label for="address1">Address 1:</label>
+        <input type="text" id="address1"  name="address1" required>
+
+
+    <p><label for="address2">Address 2:</label>
+        <input type="text" id="address2"  name="address2">
+
+    <p><label for="city">City:</label>
+        <input type="text" id="city"  name="city" required>
+
+
+    <p><label for="state">State:</label>
+    <select id="state" name="state" required>
+        <option value="">Select a state</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <!-- Add more options for each state -->
+    </select>
+
+    <p><label for="zip">Zip code:</label>
+    <input type="text" id="zip" name="zip" pattern="[0-9]{5}" required>
+
+
+    <p></p>
+    <button type="submit">Save address</button>
+    <p></p>
+</form>
+
+
+<form th:action="@{/newFriend}" method="post">
+    <label><input type="text" id="newFriend" name="newFriend" placeholder="Find new friend"></label>
+    <button type="submit">Send invite</button>
+</form>
+<a href="/invites">My invites</a>
+<a href="/myLocation">My address</a>
+<div th:each="elements : ${friends}">
+    <label>
+        <input type="text" th:value="${elements.name}">
+    </label>
+    <form method="post"  th:action="@{/send}">
+        <input type="hidden" name="friendId" th:value ="${elements.id}" >
+        <input type="text" id="nameOfLoc" name="nameOfLoc" placeholder="Name of Location">
+    <select id="sendLocation" name="sendLocation" required>
+        <option value="">Select a share </option>
+        <option value="read">Read only</option>
+        <option value="admin" name="admin">Admin access</option>
+    </select>
+        <button type="submit" >SendLocation</button>
+    </form>
+</div>
+
+</body>
+</html>
