@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invites</title>
+</head>
+<body>
+
+<div th:each="elements : ${invites}">
+    <label>
+        <input type="text" th:value="${elements.name}">
+    </label>
+    <a th:href="@{/accept(id=${elements.id})}"  type="submit">Accept</a>
+    <a th:href="@{/decline(id=${elements.id})}" type="submit">Decline</a>
+</div>
+
+</body>
+</html>
