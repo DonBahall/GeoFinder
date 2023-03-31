@@ -80,8 +80,7 @@ public class UserServiceImpl {
     }
     public void declineInvites(Long id, Long frId){
         FriendModel model = friendRepository.findByUserIdAndFriendsId(id,frId);
-        model.setApply(Apply.DECLINE);
-        friendRepository.save(model);
+        friendRepository.delete(model);
     }
     public void createLocation(String name,String address1,
                                String address2,String city,
